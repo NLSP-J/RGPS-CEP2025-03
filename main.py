@@ -1,5 +1,6 @@
 import pygame
 import random
+import asyncio
 
 pygame.init()
 
@@ -110,7 +111,7 @@ def game_over_screen():
 # Main Game Loop
 running = True
 
-def main():
+async def main():
     global running, game
     while running:
         clock.tick(game["speed"])
@@ -145,6 +146,8 @@ def main():
         else:
             game_over_screen()
 
+        await asyncio.sleep(0)
+        
     pygame.quit()
 
-main()
+asyncio.run(main())
